@@ -84,11 +84,13 @@ class App extends Component {
                 <header className="App-header">
                 Oxygen supply/demand calculator
                     <div className="subHeader text-secondary">Figures entered here are for GSH but feel free to copy and use</div>
+
+                    <br/>
                 </header>
                 <body className="App-body">
                     <Form style={{width:"836px"}}>
                     <Accordion defaultActiveKey="0" >
-                            <Accordion.Toggle as={Button} className eventKey="config" style={{position:"fixed",right:"10px",top:"5px"}}><MdSettings size={30}/></Accordion.Toggle>
+                            <Accordion.Toggle as={Button} variant={"secondary"} eventKey="config" style={{position:"fixed",right:"10px",top:"5px"}}><MdSettings size={20}/></Accordion.Toggle>
                             <Accordion.Collapse eventKey="config">
 
                             <Card className="extra-margin">
@@ -116,12 +118,12 @@ class App extends Component {
                                         suffix={"tons (excludes 1 ton minimum remaining volume)"}>test</Number>
                                 <Number label={"VIE Total Supply"} value={calculated_supply}
                                         tooltip={""} suffix={"litres (at ambient)"} readonly={true}/>
-                                <Button onClick={this.addCylinder.bind(this)} style={{float: "left"}} size={"sm"}> + </Button>
                                 <span className="subHeader">Bank Supply</span>
                                 <br/>
                                 <ListGroup>
                                     <ListGroup.Item>
                                         {cylinders}
+                                                                        <Button variant={"secondary"} onClick={this.addCylinder.bind(this)} style={{float: "left"}} size={"sm"}> + </Button>
                                     </ListGroup.Item>
                                 </ListGroup>
                                 <Number label={"at Full Pressure"} value={calculated_cylinder_volume}
@@ -215,6 +217,7 @@ class App extends Component {
                         </Card>
                     </Accordion>
                     </Form>
+                <div className="subHeader text-secondary" style={{fontSize:"15px"}}>Developed by Ross Hofmeyr and coded by Steve Hofmeyr. <a href="https://github.com/stevehof/lox">Source Code</a></div>
                 </body>
             </div>
         );
