@@ -1,13 +1,7 @@
-import {FormControl, FormLabel, InputGroup} from "react-bootstrap";
+import {FormControl, InputGroup} from "react-bootstrap";
 import {Component} from "react";
-import {Button} from "bootstrap";
-
 
 export class Cylinder extends Component{
-
-    constructor(props) {
-        super(props);
-    }
 
     onChangeCylinderCount(event){
         if(this.props.onChange){

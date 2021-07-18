@@ -4,10 +4,6 @@ import {FormControl} from "react-bootstrap";
 
 export class DemandRow extends Component{
 
-    constructor(props) {
-        super(props);
-    }
-
     onFlowReqChange(event){
         this.props.onChangeDemand(this.props.id, "flow_req", event.target.value)
     }

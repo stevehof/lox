@@ -4,11 +4,6 @@ import {Component} from "react";
 
 export class Number extends Component{
 
-    constructor(props) {
-        super(props);
-    }
-
-
     onChange(event){
         if(this.props.onChange){
             this.props.onChange(this.props.item, event.target.value)
