@@ -24,7 +24,7 @@ export class Cylinder extends Component{
 
     render(){
         return(<InputGroup className="mb-3">
-            <InputGroup.Text>Set {this.props.id+1}</InputGroup.Text>
+            <InputGroup.Text >Set {this.props.id+1}</InputGroup.Text>
             <InputGroup.Text>#</InputGroup.Text>
             <FormControl type={"number"} value={this.props.cylinder_count} aria-label={""} onChange={this.onChangeCylinderCount.bind(this)}/>
             <InputGroup.Text>{"Cylinders with Volume"}</InputGroup.Text>

@@ -105,7 +105,7 @@ class App extends Component {
                 </header>
                 <body className="App-body">
                                 {this.state.saveAlert ?   <Alert key={"saved"} variant={"success"} className={"btn-sm"} onClose={this.hideSaveAlert.bind(this)}dismissable> Saved to browser storage </Alert>: null}
-                    <Form style={{width:"836px"}}>
+                    <Form style={{maxWidth:"836px", width:"100vw"}}>
                     <Accordion defaultActiveKey="0" >
                             <Accordion.Toggle as={Button} variant={"secondary"} eventKey="config" style={{position:"fixed",right:"10px",top:"5px"}}><MdSettings size={20}/></Accordion.Toggle>
                             <Accordion.Collapse eventKey="config">
@@ -129,14 +129,13 @@ class App extends Component {
                         <Card>
                             <Card.Header>Supply</Card.Header>
                             <Card.Body>
-                                <span className="subHeader">LOx Supply</span>
+                                <div className="internalHeader" >LOx Supply</div>
                                 <Number label={"VIE Total Supply"} value={this.state.vie_total_supply}
                                         tooltip={""} onChange={this.onChange.bind(this)} item={"vie_total_supply"}
                                         suffix={"tons (excludes 1 ton minimum remaining volume)"}>test</Number>
                                 <Number label={"VIE Total Supply"} value={calculated_supply}
                                         tooltip={""} suffix={"litres (at ambient)"} readonly={true}/>
-                                <span className="subHeader">Bank Supply</span>
-                                <br/>
+                                <div className="internalHeader">Bank Supply</div>
                                 <ListGroup>
                                     <ListGroup.Item>
                                         {cylinders}
