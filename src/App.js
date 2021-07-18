@@ -1,17 +1,18 @@
 import './App.css';
-import {Accordion, Button, Card, Form, FormControl, InputGroup, ListGroup, Table} from 'react-bootstrap';
+import {Accordion, Alert, Button, Card, Form, FormControl, InputGroup, ListGroup, Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Component} from "react";
 import {Number} from "./components/Number";
 import {Cylinder} from "./components/Cylinder";
 import {DemandRow} from "./components/DemandRow";
-import {MdSettings} from "react-icons/md";
+import {MdSave, MdSettings} from "react-icons/md";
 
 // eslint-disable-next-line no-undef
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {vie_total_supply: 47,
+        const savedState = this.getSavedState()
+        this.state = savedState || {vie_total_supply: 47,
             lox_exp_ratio: 861,
             lox_l_per_kg: 0.8767,
             ambient_pressure: 1013,
@@ -29,8 +30,8 @@ class App extends Component {
                 {what:"\"Double-barrel\" NPO2:",criterion:"",patients:5,flow_req:15},
                 {what:"Patients on NPO2",criterion:"liters/min per pt:",patients:20,flow_req:5},
                 {what:"Patients under anaesthesia",criterion:"liters/min average:",patients:10,flow_req:2},
-
-            ]
+            ],
+            saveAlert:false
         }
     }
 
@@ -65,7 +66,19 @@ class App extends Component {
         cyls.pop(id)
         this.setState({cylinders:cyls})
     }
-
+    saveState(){
+        this.setState({saveAlert:true})
+        let state = this.state
+        state.saveAlert = false
+        localStorage.setItem('LOxSavedState', JSON.stringify(state));
+        setTimeout(this.hideSaveAlert.bind(this), 2000)
+    }
+    getSavedState(){
+        return JSON.parse(localStorage.getItem('LOxSavedState'));
+    }
+    hideSaveAlert(){
+        this.setState({saveAlert:false})
+    }
     render() {
         const l_o2_stp = this.state.lox_exp_ratio * this.state.lox_l_per_kg * 1000
         const calculated_supply = Math.round(this.state.vie_total_supply * l_o2_stp)
@@ -79,8 +92,11 @@ class App extends Component {
                              removeCylinder={this.removeCylinder.bind(this)}
                              onChange={this.onChangeCylinder.bind(this)}/>
         })
+
         return (
             <div className="App">
+
+                                <Button variant={"secondary"} style={{position:"fixed",right:"70px",top:"5px"}} onClick={this.saveState.bind(this)}><MdSave size={20}/></Button>
                 <header className="App-header">
                 Oxygen supply/demand calculator
                     <div className="subHeader text-secondary">Figures entered here are for GSH but feel free to copy and use</div>
@@ -88,6 +104,7 @@ class App extends Component {
                     <br/>
                 </header>
                 <body className="App-body">
+                                {this.state.saveAlert ?   <Alert key={"saved"} variant={"success"} className={"btn-sm"} onClose={this.hideSaveAlert.bind(this)}dismissable> Saved to browser storage </Alert>: null}
                     <Form style={{width:"836px"}}>
                     <Accordion defaultActiveKey="0" >
                             <Accordion.Toggle as={Button} variant={"secondary"} eventKey="config" style={{position:"fixed",right:"10px",top:"5px"}}><MdSettings size={20}/></Accordion.Toggle>
