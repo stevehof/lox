@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/lox/static/css/main.95bf6f3d.chunk.css",
-    "main.js": "/lox/static/js/main.3bf9ef3a.chunk.js",
-    "main.js.map": "/lox/static/js/main.3bf9ef3a.chunk.js.map",
+    "main.js": "/lox/static/js/main.87c3c523.chunk.js",
+    "main.js.map": "/lox/static/js/main.87c3c523.chunk.js.map",
     "runtime-main.js": "/lox/static/js/runtime-main.8b3289c6.js",
     "runtime-main.js.map": "/lox/static/js/runtime-main.8b3289c6.js.map",
     "static/css/2.fb17aa6d.chunk.css": "/lox/static/css/2.fb17aa6d.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.fb17aa6d.chunk.css",
     "static/js/2.32f0e17e.chunk.js",
     "static/css/main.95bf6f3d.chunk.css",
-    "static/js/main.3bf9ef3a.chunk.js"
+    "static/js/main.87c3c523.chunk.js"
   ]
 }
